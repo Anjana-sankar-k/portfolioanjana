@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anjana Sankar | Portfolio</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;700&display=swap');
+        
+        :root {
+            --primary: #1a6ed8;
+            --secondary: #c8e0ff;
+            --accent: #0a4aa8;
+            --dark: #222222;
+            --light: #f0f7ff;
+            --gradient: linear-gradient(135deg, rgba(26, 110, 216, 0.2), rgba(200, 224, 255, 0.2), rgba(240, 247, 255, 0.2));
+            --aura-glow: 0 0 20px rgba(26, 110, 216, 0.4);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: white;
+            color: var(--dark);
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+        
+        header {
+            padding: 120px 0 80px;
+            text-align: center;
+            background-image: var(--gradient);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 0 15px rgba(10, 74, 168, 0.2);
+        }
+        
+        .header-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 96px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+            line-height: 1;
+            text-transform: uppercase;
+        }
+        
+        .subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 20px;
+            font-weight: 500;
+            color: var(--dark);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+        
+        .contact-info {
+            font-size: 18px;
+            margin-top: 30px;
+            color: var(--dark);
+            font-weight: 400;
+        }
+        
+        .aura-element {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(26,110,216,0.6) 0%, rgba(10,74,168,0.3) 40%, rgba(10,74,168,0) 70%);
+            filter: blur(30px);
+            opacity: 0.7;
+            z-index: 1;
+            animation: pulse 8s infinite alternate;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(1.1);
+                opacity: 0.7;
+            }
+        }
+        
+        .section {
+            padding: 90px 0;
+            position: relative;
+        }
+        
+        .section:nth-child(even) {
+            background-color: var(--light);
+        }
+        
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 48px;
+            color: var(--primary);
+            margin-bottom: 50px;
+            font-weight: 600;
+            text-align: center;
+            position: relative;
+            text-transform: uppercase;
+        }
+        
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+        
+        .two-column {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        
+        .column {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .education, .experience {
+            margin-bottom: 50px;
+            padding: 25px;
+            border-radius: 8px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .education:hover, .experience:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(10,74,168,0.1);
+        }
+        
+        .institution, .role {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            color: var(--accent);
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .year {
+            font-size: 16px;
+            color: var(--dark);
+            margin-bottom: 15px;
+            font-style: italic;
+            font-weight: 500;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .project {
+            background-color: white;
+            padding: 35px;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.4s;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .project::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(26,110,216,0.05), rgba(10,74,168,0.02));
+            z-index: -1;
+        }
+        
+        .project::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 0;
+            background: var(--primary);
+            transition: height 0.3s ease;
+        }
+        
+        .project:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(10,74,168,0.15);
+        }
+        
+        .project:hover::after {
+            height: 100%;
+        }
+        
+        .project-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 26px;
+            color: var(--accent);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 20px;
+        }
+        
+        .skill-category {
+            margin-bottom: 40px;
+        }
+        
+        .category-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 26px;
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .skill-item {
+            background-color: var(--light);
+            color: var(--dark);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 15px;
+            font-weight: 500;
+            border: 1px solid var(--secondary);
+            transition: all 0.3s;
+            box-shadow: 0 2px 5px rgba(10,74,168,0.1);
+        }
+        
+        .skill-item:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(10,74,168,0.2);
+        }
+        
+        .elegant-button {
+            display: inline-block;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 14px 36px;
+            background-color: transparent;
+            color: var(--accent);
+            text-decoration: none;
+            margin-top: 20px;
+            border: 2px solid var(--accent);
+            transition: all 0.3s;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .elegant-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--accent);
+            transition: all 0.4s;
+            z-index: -1;
+        }
+        
+        .elegant-button:hover {
+            color: white;
+        }
+        
+        .elegant-button:hover::before {
+            left: 0;
+        }
+        
+        .summary-text {
+            font-size: 20px;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto 50px;
+            text-align: center;
+            color: #444;
+            font-weight: 400;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 80px 0;
+            background-color: var(--light);
+            color: var(--dark);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .footer-text {
+            font-size: 16px;
+            margin-bottom: 20px;
+            font-weight: 500;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .connect-section {
+            text-align: center;
+            padding: 100px 0;
+            background-image: var(--gradient);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .connect-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 60px;
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-weight: 600;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .connect-subtitle {
+            font-size: 20px;
+            max-width: 650px;
+            margin: 0 auto 50px;
+            color: #444;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Graphics elements */
+        .graphic-element {
+            position: absolute;
+            background-color: rgba(26, 110, 216, 0.1);
+            border-radius: 50%;
+            mix-blend-mode: multiply;
+        }
+        
+        .line-decoration {
+            position: absolute;
+            width: 100px;
+            height: 3px;
+            background-color: var(--secondary);
+            opacity: 0.5;
+        }
+        
+        @media (max-width: 768px) {
+            .header-title {
+                font-size: 70px;
+            }
+            
+            .section-title {
+                font-size: 40px;
+            }
+            
+            .container {
+                padding: 0 20px;
+            }
+            
+            .connect-title {
+                font-size: 46px;
+            }
+            
+            .button-group {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="aura-element" style="width: 400px; height: 400px; top: -150px; right: -100px;"></div>
+        <div class="aura-element" style="width: 350px; height: 350px; bottom: -100px; left: 5%;"></div>
+        <div class="aura-element" style="width: 250px; height: 250px; top: 15%; left: -5%;"></div>
+        
+        <div class="graphic-element" style="width: 80px; height: 80px; top: 20%; right: 15%;"></div>
+        <div class="graphic-element" style="width: 40px; height: 40px; bottom: 30%; left: 20%;"></div>
+        <div class="graphic-element" style="width: 60px; height: 60px; top: 65%; right: 25%;"></div>
+        
+        <div class="line-decoration" style="top: 30%; left: 5%; transform: rotate(45deg);"></div>
+        <div class="line-decoration" style="bottom: 20%; right: 10%; transform: rotate(-30deg);"></div>
+        
+        <div class="container header-content">
+            <h1 class="header-title">Anjana Sankar</h1>
+            <div class="subtitle">Technology Enthusiast & Developer</div>
+            <div class="contact-info">
+                <p>anjanasankar50@gmail.com | +91 8943350868</p>
+            </div>
+        </div>
+    </header>
+    
+    <section class="section">
+        <div class="container">
+            <p class="summary-text">A sophomore at CUSAT with a passion for technology, research, and community-driven innovation. Experienced in
+            software development, AI/ML, content strategy, and event organization, with hands-on research and project execution.
+            Skilled in leading initiatives, problem-solving, and adapting to dynamic environments.</p>
+        </div>
+    </section>
+    
+    <section class="section">
+        <div class="aura-element" style="width: 300px; height: 300px; top: 20%; right: -5%;"></div>
+        <div class="line-decoration" style="top: 40%; left: 15%; transform: rotate(15deg);"></div>
+        
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="two-column">
+                <div class="column">
+                    <div class="education">
+                        <div class="institution">Cochin University of Science and Technology</div>
+                        <div class="year">2024 - Present</div>
+                        <p>Integrated MSc in Computer Science (AI and Data Science)</p>
+                        <p><strong>Related Coursework:</strong> Database Systems, Computer Science, OS, Agile software engineering, DSA, DAA</p>
+                        <p><strong>GPA:</strong> 9.0/10.0</p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="education">
+                        <div class="institution">Bharatiya Vidya Bhavan, Thirunavaya</div>
+                        <div class="year">Graduated</div>
+                        <p>High School Diploma</p>
+                        <p>School Topper with a 10.0 GPA</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <div class="aura-element" style="width: 250px; height: 250px; bottom: 10%; left: -5%;"></div>
+        <div class="graphic-element" style="width: 50px; height: 50px; top: 30%; right: 10%;"></div>
+        
+        <div class="container">
+            <h2 class="section-title">Experience</h2>
+            <div class="experience">
+                <div class="role">Research & Design — IMX-One Payload</div>
+                <div class="year">UL SPACE CLUB</div>
+                <p>Contributed to the research and design of the IMX-One Payload, an aerospace innovation project. Presented findings
+                and technical advancements to Ex-ISRO Chairman S. Somnath at NIT Calicut, demonstrating expertise in research
+                presentation and technical communication.</p>
+            </div>
+            
+            <div class="experience">
+                <div class="role">Organizer — Make-a-Ton</div>
+                <div class="year">South India's Largest Hackathon</div>
+                <p>Managed end-to-end planning and execution of a large-scale hackathon, overseeing content strategy, operations, and
+                cross-team collaboration. Developed a keen ability to anticipate participant needs and optimize real-time problem-
+                solving under high-pressure scenarios.</p>
+            </div>
+            
+            <div class="experience">
+                <div class="role">Women in Tech Lead</div>
+                <div class="year">TinkerHub Foundation, DCS CUSAT</div>
+                <p>Led initiatives aimed at increasing female participation in technology, including OpenMic, a structured learning program
+                that significantly improved engagement in tech events. Focused on community building, mentorship, and fostering an
+                inclusive learning environment.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <div class="aura-element" style="width: 350px; height: 350px; top: 30%; right: -10%;"></div>
+        <div class="line-decoration" style="bottom: 25%; left: 10%; transform: rotate(-20deg);"></div>
+        
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-grid">
+                <div class="project">
+                    <div class="project-title">Prophecy.exe</div>
+                    <div class="year">FOSSHack 2025</div>
+                    <p>AI-powered fortune-telling app using Streamlit, DeepFace, MediaPipe, OpenCV, and Pillow for sentiment-based readings.</p>
+                </div>
+                
+                <div class="project">
+                    <div class="project-title">Light Pollution Detection App</div>
+                    <p>Flask-based tool for real-time light pollution analysis.</p>
+                </div>
+                
+                <div class="project">
+                    <div class="project-title">Mental Health Chatbot - Delulu</div>
+                    <div class="year">Google AI Hackathon</div>
+                    <p>AI chatbot offering mental health support with NLP.</p>
+                </div>
+                
+                <div class="project">
+                    <div class="project-title">LinkedIn Comment Generator</div>
+                    <div class="year">Audrey Chen's AI Hackathon</div>
+                    <p>AI tool automates professional networking comments and makes them interesting.</p>
+                </div>
+                
+                <div class="project">
+                    <div class="project-title">Spill the Tea</div>
+                    <p>Anonymous storytelling platform using Streamlit, Flask, and MongoDB.</p>
+                </div>
+                
+                <div class="project">
+                    <div class="project-title">Yapma</div>
+                    <div class="year">TinkHerHack 3.0</div>
+                    <p>AI-powered ethical safeguard using Flask and OpenAI API to detect and block harmful AI prompts with a Gen Z-friendly, sassy approach.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <div class="aura-element" style="width: 280px; height: 280px; bottom: 10%; left: 5%;"></div>
+        <div class="graphic-element" style="width: 70px; height: 70px; top: 20%; right: 20%;"></div>
+        
+        <div class="container">
+            <h2 class="section-title">Skills</h2>
+            
+            <div class="skill-category">
+                <h3 class="category-title">Programming Languages</h3>
+                <div class="skills-container">
+                    <div class="skill-item">Python</div>
+                    <div class="skill-item">JavaScript</div>
+                    <div class="skill-item">HTML</div>
+                    <div class="skill-item">CSS</div>
+                    <div class="skill-item">C++</div>
+                    <div class="skill-item">Flutter</div>
+                </div>
+            </div>
+            
+            <div class="skill-category">
+                <h3 class="category-title">Frameworks & Tools</h3>
+                <div class="skills-container">
+                    <div class="skill-item">Flask</div>
+                    <div class="skill-item">Streamlit</div>
+                    <div class="skill-item">React</div>
+                    <div class="skill-item">MongoDB</div>
+                    <div class="skill-item">Supabase</div>
+                    <div class="skill-item">TensorFlow</div>
+                    <div class="skill-item">OpenAI API</div>
+                </div>
+            </div>
+            
+            <div class="skill-category">
+                <h3 class="category-title">Other Skills</h3>
+                <div class="skills-container">
+                    <div class="skill-item">Content Strategy</div>
+                    <div class="skill-item">Technical Writing</div>
+                    <div class="skill-item">Research Communication</div>
+                    <div class="skill-item">Community Building</div>
+                    <div class="skill-item">Hackathon Operations</div>
+                    <div class="skill-item">AI & ML Implementation</div>
+                </div>
+            </div>
+            
+            <div class="skill-category">
+                <h3 class="category-title">Languages</h3>
+                <div class="skills-container">
+                    <div class="skill-item">English</div>
+                    <div class="skill-item">Malayalam</div>
+                    <div class="skill-item">Hindi</div>
+                    <div class="skill-item">Korean</div>
+                    <div class="skill-item">French</div>
+                    <div class="skill-item">Italian</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="connect-section">
+        <div class="aura-element" style="width: 450px; height: 450px; top: 50%; left: 50%; transform: translate(-50%, -50%);"></div>
+        <div class="graphic-element" style="width: 90px; height: 90px; top: 20%; left: 20%;"></div>
+        <div class="graphic-element" style="width: 60px; height: 60px; bottom: 25%; right: 15%;"></div>
+        
+        <div class="container">
+            <h2 class="connect-title">Let's Connect</h2>
+            <p class="connect-subtitle">I'm always open to discussing tech projects, innovative ideas, and new opportunities.</p>
+            <div class="button-group">
+                <a href="#" class="elegant-button">Download Resume</a>
+                <a href="#" class="elegant-button">Contact Me</a>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="aura-element" style="width: 300px; height: 300px; bottom: -150px; right: -50px;"></div>
+        
+        <div class="container">
+            <p class="footer-text">© 2025 Anjana Sankar</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Create dynamic aura effects
+        const auraElements = document.querySelectorAll('.aura-element');
+        const graphicElements = document.querySelectorAll('.graphic-element');
+        
+        document.addEventListener('mousemove', function(e) {
+            const mouseX = e.clientX / window.innerWidth;
+            const mouseY = e.clientY / window.innerHeight;
+            
+            auraElements.forEach((elem, index) => {
+                const offsetX = (mouseX - 0.5) * (index + 1) * 15;
+                const offsetY = (mouseY - 0.5) * (index + 1) * 15;
+                const scale = 1 + (mouseX * mouseY * 0.05);
+                
+                elem.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${scale})`;
+            });
+            
+            graphicElements.forEach((elem, index) => {
+                const offsetX = (mouseX - 0.5) * (index + 1) * 20;
+                const offsetY = (mouseY - 0.5) * (index + 1) * 20;
+                
+                elem.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+            });
+        });
+        
+        // Add parallax scrolling effect
+        window.addEventListener('scroll', function() {
+            const scrollPosition = window.scrollY;
+            
+            auraElements.forEach((elem, index) => {
+                const speed = 0.1 * (index + 1);
+                const yPos = -scrollPosition * speed;
+                const currentTransform = elem.style.transform || '';
+                
+                if (currentTransform.includes('translate')) {
+                    const updatedTransform = currentTransform.replace(/translateY\([^)]*\)/, '');
+                    elem.style.transform = `${updatedTransform} translateY(${yPos}px)`;
+                } else {
+                    elem.style.transform = `translateY(${yPos}px) ${currentTransform}`;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
